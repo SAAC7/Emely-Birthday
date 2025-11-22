@@ -1,0 +1,86 @@
+:root{
+    --red_saturado: #c51217;
+    --red_firebrick: #b22222;
+    --red_marron: #800000;
+    --yellow_oro: #eac102;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color:var(--red_firebrick);
+}
+body{
+    overflow: hidden;
+    
+}
+.container-ball{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+}
+.snow{
+    background-image: url("../images/snowball.png");
+    background-repeat: repeat;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    filter: blur(1.5px);
+}
+.size_1{
+    background-size: 7vw 15vh;
+    background-position: 0px -100px;
+    animation: snow1 14s linear infinite;
+}
+.size_2{
+    /* background-size: 7vw 15vh;
+    background-position: 0px -100px; */
+    animation: snow2 12s linear infinite;
+}
+.size_3{
+    background-size: 20vw 35vh;
+    background-position: 0px 90px;
+    animation: snow3 10s linear infinite;
+}
+.size_4{
+    background-size: 40vw 60vh;
+    background-position: 150px 100px;
+    animation: snow4 8s linear infinite;
+}
+
+@keyframes snow1 {
+    0%{
+        background-position: 0px -100px;
+    }
+    100%{
+        background-position: 150px 35px;
+    }
+}
+@keyframes snow2 {
+    0%{
+        background-position: 0px 0px;
+    }
+    100%{
+        background-position: 300px 270px;
+    }
+}
+@keyframes snow3 {
+    0%{
+        background-position: 0px 90px;
+    }
+    100%{
+        background-position: 150px 35px;
+    }
+}
+@keyframes snow4 {
+    0%{
+        background-position: 0px -100px;
+    }
+    100%{
+        background-position: 150px 35px;
+    }
+}
