@@ -1,86 +1,128 @@
-:root{
+:root {
     --red_saturado: #c51217;
     --red_firebrick: #b22222;
     --red_marron: #800000;
     --yellow_oro: #eac102;
+    --blue_oscuro: #162a72;
+    --blue_claro: #405685;
 }
 
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    background-color:var(--red_firebrick);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
 }
 body{
-    overflow: hidden;
-    
-}
-.container-ball{
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0);
-}
-.snow{
-    background-image: url("../images/snowball.png");
-    background-repeat: repeat;
-    background-color: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    filter: blur(1.5px);
-}
-.size_1{
-    background-size: 7vw 15vh;
-    background-position: 0px -100px;
-    animation: snow1 14s linear infinite;
-}
-.size_2{
-    /* background-size: 7vw 15vh;
-    background-position: 0px -100px; */
-    animation: snow2 12s linear infinite;
-}
-.size_3{
-    background-size: 20vw 35vh;
-    background-position: 0px 90px;
-    animation: snow3 10s linear infinite;
-}
-.size_4{
-    background-size: 40vw 60vh;
-    background-position: 150px 100px;
-    animation: snow4 8s linear infinite;
+    background-color: var(--red_firebrick);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes snow1 {
-    0%{
-        background-position: 0px -100px;
+/* nieve */
+.container-ball {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10vh;
+    left: 0;
+    background-size: cover;
+    background: rgba(0, 0, 0,0);
+}
+
+.falling-snowflake {
+    text-align: center;
+}
+.falling-snowflake span {
+    display: inline-block;
+    width: 4vmin;
+    height: 4vmin;
+    background: url("../images/snowflake_small.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    -webkit-animation: fallingLeaves 10s linear infinite;
+    -moz-animation: fallingLeaves 10s linear infinite;
+}
+.falling-snowflake span:nth-child(5n+5) {
+    -webkit-animation-delay: 1.3s;
+    -moz-animation-delay: 1.3s;
+}
+.falling-snowflake span:nth-child(3n+2) {
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+}
+.falling-snowflake span:nth-child(2n+5) {
+    -webkit-animation-delay: 1.7s;
+    -moz-animation-delay: 1.7s;
+}
+.falling-snowflake span:nth-child(3n+10) {
+    -webkit-animation-delay: 2.7s;
+    -moz-animation-delay: 2.7s;
+}
+.falling-snowflake span:nth-child(7n+2) {
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+}
+.falling-snowflake span:nth-child(4n+5) {
+    -webkit-animation-delay: 5.5s;
+    -moz-animation-delay: 5.5s;
+}
+.falling-snowflake span:nth-child(3n+7) {
+    -webkit-animation-delay: 8s;
+    -moz-animation-delay: 8s;
+}
+@-webkit-keyframes fallingLeaves {
+    0% {
+        -webkit-transform: translate(-50px,0px) rotate(0deg);
+        opacity: 1;
     }
-    100%{
-        background-position: 150px 35px;
+    75% {
+        -webkit-transform: translate(50px,75vh) rotate(270deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translate(150px,100vh) rotate(360deg);
+        opacity: 0;
     }
 }
-@keyframes snow2 {
-    0%{
-        background-position: 0px 0px;
-    }
-    100%{
-        background-position: 300px 270px;
-    }
+/* fin de nieve */
+header{
+    top: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
 }
-@keyframes snow3 {
-    0%{
-        background-position: 0px 90px;
-    }
-    100%{
-        background-position: 150px 35px;
-    }
+#header-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-@keyframes snow4 {
-    0%{
-        background-position: 0px -100px;
-    }
-    100%{
-        background-position: 150px 35px;
-    }
+#header-sticky{
+    position: sticky;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.scrolled{
+    display: none;
+}
+h1{
+    color: var(--yellow_oro);
+}
+.card{
+    background-color: var(--blue_oscuro);
+    padding: 20px;
+    margin: 1rem;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
