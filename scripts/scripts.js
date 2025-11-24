@@ -1,15 +1,20 @@
+document.addEventListener("scroll", () => {
+    const headerContent = document.getElementById("header-content");
+    const headerSticky = document.getElementById("header-sticky");
 
-window.addEventListener('scroll', () => {
-    const headerSticky = document.getElementById('header-sticky');
-    const headerContent = document.getElementById('header-content');
-    if (window.scrollY > 0) {
-        headerSticky.classList.remove('scrolled');
-        headerContent.classList.add('scrolled');
+    if (window.scrollY > 120) {
+        headerContent.style.opacity = "0";
+        headerContent.style.pointerEvents = "none";
+
+        headerSticky.style.opacity = "1";
     } else {
-        headerSticky.classList.add('scrolled');
-        headerContent.classList.remove('scrolled');
+        headerContent.style.opacity = "1";
+        headerContent.style.pointerEvents = "auto";
+
+        headerSticky.style.opacity = "0";
     }
 });
+
 
 const timer = (()=> {
     // Set the date we're counting down to

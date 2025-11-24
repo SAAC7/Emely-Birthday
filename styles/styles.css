@@ -2,127 +2,309 @@
     --red_saturado: #c51217;
     --red_firebrick: #b22222;
     --red_marron: #800000;
-    --yellow_oro: #eac102;
-    --blue_oscuro: #162a72;
+    --yellow_oro: #f7d674;
+    --blue_oscuro: #03192e;
     --blue_claro: #405685;
+    --white: #fff;
+    --white_trans: rgba(255, 255, 255, 0.8);
+    --gold_shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    --card_shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    --snow-count: 48;
+    /* ajustar para más/menos copos */
 }
 
+/* reset común */
 * {
-    margin: 0px;
-    padding: 0px;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0
 }
-body{
-    background-color: var(--red_firebrick);
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+    background: linear-gradient(to bottom, var(--red_firebrick), var(--red_marron));
+    color: var(--white);
     overflow-x: hidden;
+    /* evita scroll horizontal por elementos con 100vw */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+/* --- NIEVE optimizada --- */
+.snow {
+    position: fixed;
+    inset: 0;
+    /* top:0;right:0;bottom:0;left:0 */
+    pointer-events: none;
+    /* no interfiere con clicks */
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* cada copo es inline-block absoluto para variar posición */
+.snow span {
+    position: absolute;
+    top: -10vh;
+    /* start ligeramente arriba */
+    left: 0;
+    width: 4vmin;
+    height: 4vmin;
+    background-image: url("images/snowflake_small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.95;
+    transform-origin: center;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Variaciones por nth-child para distribuir left, duración y tamaño */
+/* Generamos reglas útiles y no muy pesadas: */
+.snow span:nth-child(4n+1) {
+    left: 4%;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    transform: scale(0.8)
+}
+
+.snow span:nth-child(4n+2) {
+    left: 14%;
+    animation-duration: 13s;
+    animation-delay: 1s;
+    transform: scale(0.95)
+}
+
+.snow span:nth-child(4n+3) {
+    left: 28%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+    transform: scale(0.7)
+}
+
+.snow span:nth-child(4n+4) {
+    left: 42%;
+    animation-duration: 15s;
+    animation-delay: 0.5s;
+    transform: scale(1.05)
+}
+
+.snow span:nth-child(7n+2) {
+    left: 60%;
+    animation-duration: 12s;
+    animation-delay: 1.2s;
+    transform: scale(0.9)
+}
+
+.snow span:nth-child(5n+3) {
+    left: 76%;
+    animation-duration: 14s;
+    animation-delay: 2.4s;
+    transform: scale(0.85)
+}
+
+.snow span:nth-child(3n+5) {
+    left: 88%;
+    animation-duration: 16s;
+    animation-delay: 3s;
+    transform: scale(0.6)
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 1
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(40px) rotate(360deg);
+        opacity: 0
+    }
+}
+
+/* --- HEADER --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 0.8rem 1rem;
+    backdrop-filter: blur(4px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.06));
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    height: 64px;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* nieve */
-.container-ball {
+#header-content,
+#header-sticky {
     position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+#header-sticky {
+    opacity: 0
+}
+
+header h1,
+header span {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    color: var(--yellow_oro);
+    box-shadow: var(--gold_shadow);
+    font-weight: 600;
+}
+
+/* --- LAYOUT principal --- */
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    z-index: 20;
+}
+
+/* tarjetas */
+.card {
+    background: radial-gradient(circle at 10% 10%, var(--blue_oscuro), var(--blue_claro));
+    color: var(--white);
+    padding: 1.6rem;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--card_shadow);
+    text-align: center;
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6)
+}
+
+.card h1 {
+    font-size: 1.6rem;
+    color: var(--yellow_oro);
+    margin-bottom: .6rem
+}
+
+.card picture {
+    display: block;
+    margin: 0 auto 1rem
+}
+
+.card img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto
+}
+
+/* mapa responsivo */
+.map-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 12px
+}
+
+.map-wrap iframe {
     width: 100%;
     height: 100%;
-    top: -10vh;
-    left: 0;
-    background-size: cover;
-    background: rgba(0, 0, 0,0);
+    border: 0;
+    display: block
 }
 
-.falling-snowflake {
-    text-align: center;
+/* boton confirmar centrado */
+.card button {
+    background: var(--yellow_oro);
+    color: #000;
+    font-size: 1.05rem;
+    padding: .9rem 2.2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--gold_shadow)
 }
-.falling-snowflake span {
-    display: inline-block;
-    width: 4vmin;
-    height: 4vmin;
-    background: url("../images/snowflake_small.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 
-    -webkit-animation: fallingLeaves 10s linear infinite;
-    -moz-animation: fallingLeaves 10s linear infinite;
+/* utilidades */
+footer {
+    height: 60px
 }
-.falling-snowflake span:nth-child(5n+5) {
-    -webkit-animation-delay: 1.3s;
-    -moz-animation-delay: 1.3s;
-}
-.falling-snowflake span:nth-child(3n+2) {
-    -webkit-animation-delay: 1.5s;
-    -moz-animation-delay: 1.5s;
-}
-.falling-snowflake span:nth-child(2n+5) {
-    -webkit-animation-delay: 1.7s;
-    -moz-animation-delay: 1.7s;
-}
-.falling-snowflake span:nth-child(3n+10) {
-    -webkit-animation-delay: 2.7s;
-    -moz-animation-delay: 2.7s;
-}
-.falling-snowflake span:nth-child(7n+2) {
-    -webkit-animation-delay: 3.5s;
-    -moz-animation-delay: 3.5s;
-}
-.falling-snowflake span:nth-child(4n+5) {
-    -webkit-animation-delay: 5.5s;
-    -moz-animation-delay: 5.5s;
-}
-.falling-snowflake span:nth-child(3n+7) {
-    -webkit-animation-delay: 8s;
-    -moz-animation-delay: 8s;
-}
-@-webkit-keyframes fallingLeaves {
-    0% {
-        -webkit-transform: translate(-50px,0px) rotate(0deg);
-        opacity: 1;
+
+/* responsive improvements */
+@media(min-width:900px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start
     }
-    75% {
-        -webkit-transform: translate(50px,75vh) rotate(270deg);
-        opacity: 1;
+
+    .card {
+        max-width: none
     }
-    100% {
-        -webkit-transform: translate(150px,100vh) rotate(360deg);
-        opacity: 0;
+
+    .card img {
+        max-width: 100%
     }
 }
-/* fin de nieve */
-header{
-    top: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    color: white;
-}
-#header-content{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-#header-sticky{
-    position: sticky;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.scrolled{
-    display: none;
-}
-h1{
-    color: var(--yellow_oro);
-}
-.card{
-    background-color: var(--blue_oscuro);
-    padding: 20px;
-    margin: 1rem;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-items: center;
+
+@media(max-width:600px) {
+
+    header h1,
+    header span {
+        font-size: .95rem;
+        padding: .4rem .6rem
+    }
+
+    .header-inner {
+        height: 56px
+    }
+
+    .card {
+        padding: 1rem
+    }
+
+    .card h1 {
+        font-size: 1.25rem
+    }
+
+    .snow span {
+        width: 5vmin;
+        height: 5vmin
+    }
 }
