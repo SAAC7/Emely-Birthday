@@ -15,29 +15,41 @@ html,
 body {
     font-size: 20px;
     padding: 0.5rem 0;
-}
-h1{
-    font-family: "Fleur De Leah", cursive; 
-}
-
-body {
     font-family: "Monospace", Roboto, Arial;
-    font-weight: 600;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     align-items: center;
     color: var(--color_charcoal-grey);
+    font-weight: 600;
+
 }
+
 h1, h2, h3, h4, h5, h6 {
+    font-family: "Fleur De Leah", cursive; 
     color: var(--color_stone);
     text-align: center;
 }
 
 main {
+    position: relative;
     width: 80vw;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+main::before{
+    content: "";
+    position: absolute;
+    inset: 0;
     background: url("../images/fondo.webp") no-repeat center/cover;
-    display: grid;
-    grid-template-columns: 1fr;
+    z-index: -1;
+}
+
+.card img {
+    width: 100%;
 }
 
 
