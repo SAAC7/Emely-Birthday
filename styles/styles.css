@@ -22,6 +22,7 @@
 html,
 body {
     font-size: 20px;
+    padding: 0.5rem 0;
 }
 h1{
     font-family: "Fleur De Leah", cursive; 
@@ -144,11 +145,29 @@ body {
 
 /* --- HEADER --- */
 header {
-    position: sticky;
+    background: url("../images/26391-2.png") no-repeat center/cover;
+ 
+    height: 160px;
+    position: fixed;           /* <--- cambio importante */
     top: 0;
+    left: 0;
+    width: 100%;
     padding: 0.8rem 1rem;
-    backdrop-filter: blur(4px);
-    z-index: 9;
+    /* backdrop-filter: blur(4px); */
+    z-index: 99;
+
+    /* Animación de entrada y salida */
+    opacity: 0;
+    transform: translateY(-25px);
+    pointer-events: none;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* Cuando debe ser visible */
+header.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .header-inner {
@@ -159,7 +178,6 @@ header {
     justify-content: center;
 }
 
-#header-content,
 #header-sticky {
     position: absolute;
     inset: 0;
@@ -167,13 +185,8 @@ header {
     align-items: center;
     text-align: center;
     gap: 1rem;
-    transition: opacity 0.45s ease, transform 0.45s ease;
     width: 100%;
     padding: 0 1rem;
-}
-
-#header-sticky {
-    opacity: 0
 }
 
 header h1,
@@ -185,6 +198,9 @@ header span {
     box-shadow: var(--gold_shadow);
     font-weight: 600;
 }
+
+
+
 
 /* --- LAYOUT principal --- */
 main {
@@ -276,6 +292,12 @@ footer {
 }
 
 @media (min-width: 800px) {
+    .header-inner,
+    #header-sticky{
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+    }
     section {
         flex-direction: row;
         justify-content: center;

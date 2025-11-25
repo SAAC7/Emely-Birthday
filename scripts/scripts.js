@@ -1,17 +1,14 @@
 document.addEventListener("scroll", () => {
-    // const headerContent = document.getElementById("header-content");
-    const headerSticky = document.getElementById("header-sticky");
+    const header = document.querySelector("header");
 
     if (window.scrollY > 120) {
-        // headerContent.style.opacity = "0";
-
-        headerSticky.style.opacity = "1";
+        header.classList.add("show");
     } else {
-        // headerContent.style.opacity = "1";
-
-        headerSticky.style.opacity = "0";
+        header.classList.remove("show");
     }
 });
+
+
 
 
 const timer = (()=> {
