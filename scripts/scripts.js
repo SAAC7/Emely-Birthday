@@ -1,16 +1,3 @@
-document.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-
-    if (window.scrollY > 120) {
-        header.classList.add("show");
-    } else {
-        header.classList.remove("show");
-    }
-});
-
-
-
-
 const timer = (()=> {
     // Set the date we're counting down to
     var countDownDate = new Date("Dec 20, 2025 17:00:00").getTime();

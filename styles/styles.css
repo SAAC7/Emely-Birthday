@@ -1,15 +1,7 @@
 :root {
-    --red_saturado: #c51217;
-    --red_firebrick: #b22222;
-    --red_marron: #800000;
-    --yellow_oro: #f7d674;
-    --blue_oscuro: #03192e;
-    --blue_claro: #405685;
-    --white: #fff;
-    --white_trans: rgba(255, 255, 255, 0.8);
-    --gold_shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-    --card_shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    /* ajustar para más/menos copos */
+    --color_stone:#ACA280;
+    --color_dust:#B69D70;
+    --color_charcoal-grey:#554C4E;
 }
 
 /* reset común */
@@ -29,19 +21,33 @@ h1{
 }
 
 body {
-    font-family: "Sirivennela", sans-serif;
-    min-height: 100vh;
     font-family: "Monospace", Roboto, Arial;
     font-weight: 600;
-    /* background: linear-gradient(to bottom, var(--red_firebrick), var(--red_marron)); */
-    background: var(--red_firebrick);
-    color: var(--white);
-    overflow-x: hidden;
-    /* evita scroll horizontal por elementos con 100vw */
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
+    color: var(--color_charcoal-grey);
 }
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color_stone);
+    text-align: center;
+}
+
+main {
+    width: 80vw;
+    background: url("../images/fondo.webp") no-repeat center/cover;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+
+
+
+
+
+
+
 
 /* --- NIEVE optimizada --- */
 .snow {
@@ -143,181 +149,5 @@ body {
     }
 }
 
-/* --- HEADER --- */
-header {
-    background: url("../images/26391-2.png") no-repeat center/cover;
- 
-    height: 160px;
-    position: fixed;           /* <--- cambio importante */
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.8rem 1rem;
-    /* backdrop-filter: blur(4px); */
-    z-index: 99;
-
-    /* Animación de entrada y salida */
-    opacity: 0;
-    transform: translateY(-25px);
-    pointer-events: none;
-    transition: opacity 0.45s ease, transform 0.45s ease;
-}
-
-/* Cuando debe ser visible */
-header.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.header-inner {
-    position: relative;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#header-sticky {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    width: 100%;
-    padding: 0 1rem;
-}
-
-header h1,
-header span {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    color: var(--yellow_oro);
-    box-shadow: var(--gold_shadow);
-    font-weight: 600;
-}
 
 
-
-
-/* --- LAYOUT principal --- */
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-section{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    padding: 0.5rem 1rem;
-
-}
-/* tarjetas */
-.card {
-    display: grid;
-    padding: 1rem;
-    gap: 1rem;
-    background: radial-gradient(circle at 10% 10%, var(--blue_oscuro), var(--blue_claro));
-    color: var(--white);
-    font-style: oblique;
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: var(--card_shadow);
-    text-align: center;
-    transition: transform .35s ease, box-shadow .35s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6)
-}
-
-.card h1 {
-    font-size: 2rem;
-    font-style: normal;
-    color: var(--yellow_oro);
-}
-
-.card .age18 {
-    font-size: 4rem;
-    font-family: "Mrs Saint Delafield";
-}
-
-.card picture {
-    display: block;
-    margin: 0 auto 1rem
-}
-
-.card img {
-    height: 50vh;
-    width: auto;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto
-}
-
-/* mapa responsivo */
-.map-wrap {
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: 12px
-}
-
-.map-wrap iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block
-}
-
-/* boton confirmar centrado */
-.card button {
-    background: var(--yellow_oro);
-    color: #000;
-    font-size: 1.05rem;
-    padding: .9rem 2.2rem;
-    border-radius: 5rem;
-    cursor: pointer;
-    box-shadow: var(--gold_shadow)
-}
-
-/* utilidades */
-footer {
-    height: 60px
-}
-
-@media (min-width: 800px) {
-    .header-inner,
-    #header-sticky{
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-    }
-    section {
-        flex-direction: row;
-        justify-content: center;
-        gap: 2rem;
-    }
-    .card {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        font-size: 1.3rem;
-    }
-    .text h1,
-    .text .age18 {
-        font-size: 5rem;
-    }
-
-    .card p,
-    .card button,
-    .card .map-wrap,
-    .card h1{
-        grid-column: 1/3;
-        align-self: center;
-    }
-}
