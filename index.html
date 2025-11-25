@@ -1,82 +1,98 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emely's 18th birthday — Invitación</title>
-  <meta name="description" content="Invitación virtual a la fiesta de 18 años de Emely" />
-  <meta name="author" content="Saúl Abraham Arana Calderón" />
-  <link rel="stylesheet" href="styles/styles.css">
-  <script src="scripts/scripts.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emely's 18th birthday — Invitación</title>
+    <meta name="description" content="Invitación virtual a la fiesta de 18 años de Emely" />
+    <meta name="author" content="Saúl Abraham Arana Calderón" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/scripts.js" defer></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Mrs+Saint+Delafield&display=swap');
+</style>
 </head>
+
 <body>
 
-  <!-- NIEVE: mantener fuera del flujo, pointer-events: none -->
-  <div class="snow" aria-hidden="true">
-    <!-- Generé 48 spans para el efecto; si querés menos, reduce -->
-    <!-- Nota: cada span usa nth-child para variar posición/duración -->
-    <!-- No poner demasiados copos en móviles por rendimiento -->
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+    <!-- NIEVE: mantener fuera del flujo, pointer-events: none -->
+    <div class="snow" aria-hidden="true">
+        <!-- Generé 48 spans para el efecto; si querés menos, reduce -->
+        <!-- Nota: cada span usa nth-child para variar posición/duración -->
+        <!-- No poner demasiados copos en móviles por rendimiento -->
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
 
-  <header>
-    <div class="header-inner">
-      <div id="header-content">
+    <header>
+        <div class="header-inner">
+            <!-- <div id="header-content">
         <h1>18 Navidades</h1>
         <span>Lugar</span>
         <span>Fecha y hora</span>
-      </div>
+      </div> -->
 
-      <div id="header-sticky">
-        <span><p id="timer">00:00:00</p></span>
-        <h1>Emely Ramos</h1>
-        <span>Ubicación</span>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section>
-      <div class="card">
-        <picture>
-          <img src="images/arbol.png" alt="Árbol dorado decorativo" />
-        </picture>
-        <h1>Mis 18 Navidades</h1>
-        <p>Les invito a mi celebración de cumpleaños</p>
-      </div>
-
-      <div class="card">
-        <h1>Lugar</h1>
-        <div class="map-wrap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.0388972704697!2d-91.51540018210652!3d14.846438117740856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858ea2aea7100001%3A0x564a9b005aa21c49!2sLa%20Iglesia%20de%20Jesucristo%20de%20los%20Santos%20de%20los%20%C3%9Altimos%20D%C3%ADas!5e0!3m2!1ses-419!2sgt!4v1763887243050!5m2!1ses-419!2sgt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="header-sticky">
+                <span>
+                    <p id="timer">00:00:00</p>
+                </span>
+                <h1>Emely Ramos</h1>
+                <span>Ubicación</span>
+            </div>
         </div>
-        <p>Iglesia De Jesucristo De Los Santos De Los Últimos Días</p>
-      </div>
+    </header>
 
-    </section>
+    <main>
+        <section>
+            <div class="card">
+                <picture>
+                    <img src="images/arbol.png" alt="Árbol dorado decorativo" />
+                </picture>
+                <div class="text">
+                    <h1>Mis</h1>
+                    <h1 class="age18">18</h1>
+                    <h1>Navidades</h1>
+                </div>
+                <p>Les invito a mi celebración de cumpleaños</p>
+            </div>
 
-    <section>
-      <div class="card">
-        <h1>Fecha y hora</h1>
-        <p>20 de Diciembre de 2025</p>
-        <p>5:00 PM</p>
-      </div>
 
-      <div class="card">
-        <h1>Querida Familia</h1>
-        <p>Arana Ramos</p>
-        <p>2 Personas</p>
-        <p>Esperamos contar con su asistencia</p>
-        <button type="button">Confirmar</button>
-      </div>
-    </section>
-  </main>
+        </section>
+        <section>
+            <div class="card">
+                <h1>Lugar</h1>
+                <div class="map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.0388972704697!2d-91.51540018210652!3d14.846438117740856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858ea2aea7100001%3A0x564a9b005aa21c49!2sLa%20Iglesia%20de%20Jesucristo%20de%20los%20Santos%20de%20los%20%C3%9Altimos%20D%C3%ADas!5e0!3m2!1ses-419!2sgt!4v1763887243050!5m2!1ses-419!2sgt"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p>La Iglesia De Jesucristo De Los Santos De Los Últimos Días</p>
+            </div>
 
-  <footer></footer>
+            <div class="card">
+                <h1>Fecha y hora</h1>
+                <p>20 de Diciembre de 2025</p>
+                <p>5:00 PM</p>
+            </div>
+        </section>
+
+        <section>
+                <div class="card">
+                <h1>Querida Familia</h1>
+                <p>Arana Ramos</p>
+                <p>2 Personas</p>
+                <p>Esperamos contar con su asistencia</p>
+                <button type="button">Confirmar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
 </body>
+
 </html>

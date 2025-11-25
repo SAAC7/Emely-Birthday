@@ -1,15 +1,13 @@
 document.addEventListener("scroll", () => {
-    const headerContent = document.getElementById("header-content");
+    // const headerContent = document.getElementById("header-content");
     const headerSticky = document.getElementById("header-sticky");
 
     if (window.scrollY > 120) {
-        headerContent.style.opacity = "0";
-        headerContent.style.pointerEvents = "none";
+        // headerContent.style.opacity = "0";
 
         headerSticky.style.opacity = "1";
     } else {
-        headerContent.style.opacity = "1";
-        headerContent.style.pointerEvents = "auto";
+        // headerContent.style.opacity = "1";
 
         headerSticky.style.opacity = "0";
     }
