@@ -1,7 +1,12 @@
 :root {
-    --color_stone:#ACA280;
-    --color_dust:#B69D70;
-    --color_charcoal-grey:#554C4E;
+    --color_stone: #ACA280;
+    --color_dust: #B69D70;
+    --color_charcoal-grey: #554C4E;
+    --color_gold: #D4AF37;
+    --color_gold_shadow: #795229;
+    --color_red_firevricke: #b22222;
+    --color_red_maroono: #800000;
+    --esferasize: 25vmin;
 }
 
 /* reset común */
@@ -13,21 +18,27 @@
 
 html,
 body {
-    font-size: 20px;
+    font-size: 16px;
     padding: 0.5rem 0;
     font-family: "Monospace", Roboto, Arial;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     align-items: center;
     color: var(--color_charcoal-grey);
     font-weight: 600;
 
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Fleur De Leah", cursive; 
-    color: var(--color_stone);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Fleur De Leah", cursive;
+    color: var(--color_gold);
     text-align: center;
+    font-size: 2.5rem;
 }
 
 main {
@@ -36,25 +47,96 @@ main {
     z-index: 1;
     overflow: hidden;
     border-radius: 1rem;
-    padding: 1rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-main::before{
+main::before {
     content: "";
     position: absolute;
     inset: 0;
     background: url("../images/fondo.webp") no-repeat center/cover;
+    /* background-color: rgb(11, 99, 58); */
     z-index: -1;
 }
 
-.card img {
-    width: 100%;
+.card {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    margin: 1rem 0;
+    overflow: hidden;
+    text-align: center;
+    gap: 1rem;
 }
 
+.card img {
+    width: auto;
+    height: 45vh;
+}
 
+.card .age18 {
+    position: absolute;
+    bottom: 30%;
+    left: 5%;
+    padding: 1rem;
+    border-radius: 100%;
+    width: var(--esferasize);
+    height: var(--esferasize);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px var(--color_red_firevricke);
+    /* background: radial-gradient(circle at 30% 30%, var(--color_gold), var(--color_gold_shadow)); */
+    background: radial-gradient(circle at 30% 90%, var(--color_red_firevricke), rgba(128, 0, 0, 0.281));
+    backdrop-filter: blur(5px);
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 1px 2px 5px red;
+    z-index: 1;
+}
 
+.card .text {
+    z-index: 3;
+}
 
+.card button{
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    background-color: var(--color_red_firevricke);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem;
+}
+.card button:hover {
+    cursor: pointer;
+    background-color: var(--color_red_maroono);
+    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.7);
+
+}
+
+@media (min-width: 600px) {
+    h1{
+        font-size: 3.5rem;
+    }
+    .card {
+        font-size: 1.2rem;
+    }
+
+    .card .age18 {
+        width: 20vmin;
+        height: 20vmin;
+        font-size: 4rem;
+        bottom: 25%;
+        left: 5%;
+    }
+    .lugar-fecha{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
 
 
 
@@ -160,6 +242,3 @@ main::before{
         opacity: 0
     }
 }
-
-
-
