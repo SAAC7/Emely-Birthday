@@ -43,6 +43,7 @@ h6 {
 
 main {
     position: relative;
+    padding: 1rem;
     width: 80vw;
     z-index: 1;
     overflow: hidden;
