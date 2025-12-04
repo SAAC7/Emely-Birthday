@@ -18,7 +18,7 @@ const timer = (() => {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+        document.getElementById("timer").innerHTML ="Faltan " + days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
 
         // If the count down is finished, write some text
@@ -34,10 +34,8 @@ const parameters = (() => {
 
     // Leer ID de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
-    if (id.endsWith('"')) {
-        id = id.slice(0, -1);
-    }
+    let id = (urlParams.get("id") || "").replace(/"$/,"");
+    
     if (!id) {
         document.getElementById("guestList").innerHTML = `
         <div class="card">
