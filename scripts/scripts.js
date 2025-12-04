@@ -35,7 +35,9 @@ const parameters = (() => {
     // Leer ID de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
-
+    if (id.endsWith('"')) {
+        id = id.slice(0, -1);
+    }
     if (!id) {
         document.getElementById("guestList").innerHTML = `
         <div class="card">
